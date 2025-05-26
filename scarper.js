@@ -55,7 +55,7 @@ const MAX_POSTS_PER_RUN = 5;
                             'div[role="dialog"][aria-label*="Marketplace"] img[src*="scontent"]',
                             { timeout: 10000 }
                         );
-
+                        await randomWait(page);
                         const firstSrc = await page.$eval('div[role="dialog"][aria-label*="Marketplace"] img[src*="scontent"]', img => img.src);
                         galleryImages.add(firstSrc);
 

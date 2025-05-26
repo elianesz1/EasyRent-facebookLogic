@@ -101,27 +101,11 @@ async function cleanPostHandle(post) {
         return null;
     }
 
-    // מחיקת כפתורים מתוך ה-DOM
+    // ניקוי רכיבים לא רלוונטיים מתוך ה-DOM
     await post.evaluate(el => {
         el.querySelectorAll('[role="button"]').forEach(btn => btn.remove());
         el.querySelectorAll('[role="textbox"]').forEach(box => box.remove());
         el.querySelectorAll('[role="link"]').forEach(link => link.remove());
-
-        const blacklist = [
-            "כתיבת תגובה ציבורית",
-            "משתמש מוביל",
-            "תורמ/ת תוכן בעלייה",
-            "מומחה של הקבוצה",
-            "תגובתי מאוד"
-        ];
-
-        const elements = el.querySelectorAll('*');
-        elements.forEach(elem => {
-            const text = elem.innerText;
-            if (text && blacklist.some(phrase => text.includes(phrase))) {
-                elem.remove();
-            }
-        });
     });
 
     // שליפה מחדש של הטקסט אחרי הניקוי
@@ -129,7 +113,7 @@ async function cleanPostHandle(post) {
     return cleanText;
 }
 
-const groupUrl = 'https://www.facebook.com/groups/333022240594651?hoisted_section_header_type=recently_seen&multi_permalinks=1787074898522704';
+const groupUrl = 'https://www.facebook.com/groups/287564448778602/?hoisted_section_header_type=recently_seen&multi_permalinks=1819414165593615&locale=he_IL';
 
 module.exports = {
     downloadImage,
