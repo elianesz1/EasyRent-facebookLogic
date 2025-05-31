@@ -123,4 +123,3 @@ const MAX_POSTS_PER_RUN = 5;
         }
     }
 })();
-

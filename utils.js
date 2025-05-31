@@ -55,7 +55,7 @@ async function processPost(text, allImages) {
 
     console.log(`פוסט נשמר עם מזהה: ${postId}`);
 
-    savePostIdInfo(date, counter); // שומר את המצב הנוכחי לקובץ
+    savePostIdInfo(date, counter); // save the last ID in file
 }
 
 async function uploadImageToFirebase(imageUrl, imageId) {
@@ -63,14 +63,14 @@ async function uploadImageToFirebase(imageUrl, imageId) {
     const buffer = response.data;
 
     const filePath = `posts/${imageId}.jpg`;
-    console.log("📦 Using bucket:", bucket.name);
+    console.log("Using bucket:", bucket.name);
     const file = bucket.file(filePath);
 
     await file.save(buffer, {
         metadata: {
             contentType: "image/jpeg",
             metadata: {
-                firebaseStorageDownloadTokens: uuidv4(), // מאפשר קישור ציבורי
+                firebaseStorageDownloadTokens: uuidv4(), // מאפשר קישור ציבורי לתמונה
             },
         },
     });
